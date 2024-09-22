@@ -28,11 +28,11 @@ pipeline{
         stage("Docker Build & Push"){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'docker-hub-cred', variable: 'docker-hub')]) {
+                    withCredentials([string(credentialsId: 'docker-hub-cred', variable: 'docker-hub1')]) {
                         sh "docker build -t amazon-clone ."
                         sh "docker tag amazon-clone dev7773/amazon-clone:latest "
-                        sh "docker login -u dev7773 -p ${docker-hub}"
-                        sh "docker push dev7773/amazon-clone:latest"
+                        sh "sudo docker login -u dev7773 -p ${docker-hub1}"
+                        sh "sudo docker push dev7773/amazon-clone:latest"
 
                     }
                 }
